@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}球员比较页面{% endblock %}
+{% block page_title %}
+    <p style="text-align: center">
+        <h1 style="text-align: center">欢迎</h1>
+        <h2 style="text-align: center">请输入两个您要对比的球员</h2>
+    </p>
+{% endblock %}
+{% block body %}
+    <form method="post" style="text-align: center">
+        <ul class="movie-list">
+            <li>
+                球员号码 <input type="number" name="compare_number1" autocomplete="off" required>
+            </li>
+            <li>
+                球员号码 <input type="number" name="compare_number2" autocomplete="off" required>
+            </li>
+            <li>
+                <input class="btn" type="submit" name="submit" value="提交球员比较申请">
+            </li>
+        </ul>
+    </form>
+{% endblock %}

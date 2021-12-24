@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}可视化管理球员{% endblock %}
+{% block page_title %}
+    <h1 style="text-align: center">欢迎</h1>
+    <h1 style="text-align: center">可视化管理界面</h1>
+{% endblock %}
+{% block echart1 %}
+{% endblock %}
+{% block body %}
+    <form method="post" style="text-align: center">
+        <label>
+            按位置筛选球员
+            <select name="select_position" autocomplete="off" required>
+                <option>中锋(ST)</option>
+                <option>左边锋（LW）</option>
+                <option>右边锋（RW）</option>
+                <option>影子前锋（SS）</option>
+                <option>前腰（CAM）</option>
+                <option>后腰（CDM）</option>
+                <option>中后卫(CB)</option>
+                <option>左边后卫（LB）</option>
+                <option>右边后卫（RB）</option>
+                <option>门将(GK)</option>
+            </select>
+        </label>
+        <input class="btn" type="submit" name="submit" value="查询">
+    </form>
+    <div style="height: 800px;width: 800px;" id="main">
+        <script>
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [
+                    {
+                        name: '各位置人数图',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                          },
+                        label: {
+                            show: false,
+                            position: 'center'
+                          },
+                        emphasis: {
+                            label: {
+                                show: true,
+                              fontSize: '30',
+                              fontWeight: 'bold'
+                            }
+                          },
+                        labelLine: {
+                            show: false
+                          },
+                        data: [
+                            {value:{{ rw }}, name:'右边锋'},
+                            {value:{{ st }}, name:'中锋'},
+                            {value:{{ lw }}, name:'左边锋'},
+                            {value:{{ ss }}, name:'影锋'},
+                            {value:{{ cam }}, name:'前腰'},
+                            {value:{{ cdm }} ,name:"后腰" },
+                            {value:{{ cb }} ,name:"中后卫" },
+                            {value:{{ lb }} ,name:"左边后卫" },
+                            {value:{{ rb }} ,name:"右边后卫" },
+                            {value:{{ gk }} ,name:"门将" }
+                          ]
+                        }
+                      ]
+                    };
+                myChart.setOption(option);
+        </script>
+    </div>
+{% endblock %}

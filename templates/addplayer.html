@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}添加球员页面{% endblock %}
+{% block page_title %}
+    <h2 style="text-align: center">欢迎，您现在可以添加球员的详细信息了</h2>
+{% endblock %}
+{% block body %}
+    <h3>添加球员</h3>
+        <form method="post" style="text-align: center">
+            球员姓名 <input type="text" name="add_playername" autocomplete="off" required>
+            球员位置 <select type="text" name="add_position" autocomplete="off" required>
+                        <option>中锋(ST)</option>
+                        <option>左边锋（LW）</option>
+                        <option>右边锋（RW）</option>
+                        <option>影子前锋（SS）</option>
+                        <option>前腰（CAM）</option>
+                        <option>后腰（CDM）</option>
+                        <option>中后卫(CB)</option>
+                        <option>左边后卫（LB）</option>
+                        <option>右边后卫（RB）</option>
+                        <option>门将(GK)</option>
+                    </select>
+            球员号码 <input type="number" name="add_number" autocomplete="off" required>
+            <ul class="movie-list">
+                <li style="text-align: left">
+                    基本信息————
+                    年龄（岁）：<input type="number" name="add_age" autocomplete="off" required>
+                    ——————
+                    惯用脚：<select type="text" name="add_foot" autocomplete="off">
+                    <option>左</option>
+                    <option>右</option>
+                </select>脚
+                </li>
+                <li style="text-align: left">
+                    身体素质————
+                    身高（cm）：<input type="number" name="add_height" autocomplete="off" required>
+                    —————-
+                    体重（kg）：<input type="number" name="add_weight" autocomplete="off" required>
+                </li>
+                <li style="text-align: left">
+                    体能——————
+                    耐力：<input type="number" name="add_endurance" autocomplete="off" required>
+                    ——————————-
+                    速度：<input type="number" name="add_speed" autocomplete="off" required>
+                </li>
+                <li style="text-align: left">
+                    有球能力————
+                    盘带能力：<input type="number" name="add_rush_with_ball" autocomplete="off" required>
+                    ——————
+                    传球能力：<input type="number" name="add_pass_ball" autocomplete="off" required>
+                </li>
+                <li style="text-align: left">
+                    其他——————
+                    射门：<input type="number" name="add_shoot" autocomplete="off" required>
+                    ——————————-
+                    防守：<input type="number" name="add_defence" autocomplete="off" required>
+                </li>
+                <li style="text-align: center"><input class="btn" type="submit" name="submit" value="信息确认无误，添加球员" onclick="return confirm('确认添加该球员吗')"></li>
+                </ul>
+        </form>
+{% endblock %}

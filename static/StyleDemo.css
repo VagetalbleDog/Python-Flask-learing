@@ -1,0 +1,124 @@
+/* 页面整体 */
+body {
+    margin: auto;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    background: url("20140516030400247.jpg");
+    background-size: 100%;
+    background-repeat: inherit;
+    color: coral;
+}
+.body_list{
+    margin: auto;
+    max-width: 800px;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    background-size: 100%;
+    background-repeat: inherit;
+    color: coral;
+}
+p{
+    font-size: 22px;
+    color: darkorange;
+}
+/* 页脚 */
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+}
+/* 头像 */
+.avatar {
+    width: 40px;
+}
+/* 球员列表 */
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.95), 0 2px 10px 0 rgba(0, 0, 0, 0.95);
+}
+.movie-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+}
+.movie-list li:last-child {
+    border-bottom:none;
+}
+.movie-list li:hover {
+    background-color: #f8f9fa;
+}
+/* 详情键按钮 */
+nav ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgba(0,0,0,0.4);
+}
+nav li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+nav li a:hover {
+    background-color: coral;
+}
+.float-right {
+    float: right;
+}
+.detail{
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    background: cyan;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+/* 表单格式 */
+input[type=submit] {
+    font-family: inherit;
+}
+input[type=text] {
+    border: 1px solid #ddd;
+}
+input[type="text"] {
+    width: 80px;
+}
+input[type="number"] {
+    width: 50px;
+}
+.btn {
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid #555555;
+    border-radius: 5px;
+}
+.btn:hover {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+/* 消息格式 */
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    color: coral;
+    background-color:#004085;
+    border-color: #b8daff;
+    border-radius: 5px;
+}

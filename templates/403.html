@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}您没有访问权限{% endblock %}
+{% block page_title %}
+    <h1 style="text-align: center">抱歉！</h1>
+    <h1 style="text-align: center">您没有访问权限</h1>
+    <h1 style="text-align: center">为您推荐以下信息</h1>
+{% endblock %}
+{% block body %}
+    <h1 style="text-align: center">历史最佳！！梅西拿下第七座金球奖!</h1>
+    <img style="text-align: center" src = "{{ url_for('static',filename='MessiChampion.jpg') }}" width="800">
+{% endblock %}

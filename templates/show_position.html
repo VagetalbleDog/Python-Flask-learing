@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}查看所有{{ position }}{% endblock %}
+{% block page_title %}
+    <h2 style="text-align: center">欢迎</h2>
+    <h3 style="text-align: center">这是球员数据库中的所有{{ position }}</h3>
+{% endblock %}
+{% block body %}
+    <p style="text-align: center">球员数据库中共有{{ players|length }} 位{{ position }}:</p>
+    <ul class="movie-list">
+    {% for p in players %} {# 迭代 #}
+        <li>
+           {{ p.playername }}————-{{ p.position }}————-{{ p.number }}号
+            <span class="float-right">
+                <form class="inline-form" method="post" action="{{ url_for('delete', player_id=p.id) }}">
+                    <input class="btn" type="submit" name="delete_player" value="删除球员" onclick="return confirm('确认删除该球员吗')">
+                    <a class="btn" href="{{ url_for('edit',player_id=p.id) }}" onclick="return confirm('确认修改该球员吗')">编辑此球员</a>
+                    <a class="detail"  href="{{ url_for('detail',player_id=p.id) }}" target="_blank" title="查看此球员详细信息">球员资料详情</a>
+                </form>
+            </span>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

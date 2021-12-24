@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球员对比页面</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleDemo.css') }}" type="text/css">
+    <link rel="icon" href="{{ url_for('static', filename='东大校徽.jpeg') }}">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+</head>
+<body style="max-width:1600px;">
+    <p style="text-align: center">
+        <h1 style="text-align: center">欢迎进入球员对比页面</h1>
+        <h2 style="text-align: center">这是{{ player1.playername }}和{{ player2.playername }}的数据比较</h2>
+    <div id="main1" style="width:800px;height:800px;float: left">
+        <script>
+            var myChart = echarts.init(document.getElementById('main1'));
+            var option = {
+                       color: [
+                            '#00FA9A',
+                            '#FF4500',
+                          ],
+                      title: {
+                        text: '{{ player1.playername }}和{{ player2.playername }}的数据雷达图',
+                        textStyle:{
+                            color:"#FF00FF"
+                        }
+                      },
+                      legend: {
+                        data: ['{{player1.playername}}', '{{player2.playername}}'],
+                        textStyle:{
+                            color:"#FF00FF",
+                            fontSize:25,
+                        }
+                      },
+                      radar: {
+                        // shape: 'circle',
+                        indicator: [
+                          { name: '耐力', max: 100 },
+                          { name: '速度', max: 100 },
+                          { name: '盘带', max: 100 },
+                          { name: '传球', max: 100 },
+                          { name: '射门', max: 100 },
+                          { name: '防守', max: 100 }
+                        ]
+                      },
+                      series: [
+                        {
+                          name: ' vs ',
+                          type: 'radar',
+                          tooltip: {
+                            trigger: 'item',
+                        },
+                        data: [
+                            {
+                              value: [{{ player1.endurance }},{{ player1.speed }},{{ player1.rush_with_ball }},{{ player1.pass_ball }},{{ player1.shoot }},{{ player1.defence }}],
+                              name: '{{player1.playername}}'
+                            },
+                            {
+                              value: [{{ player2.endurance }},{{ player2.speed }},{{ player2.rush_with_ball }},{{ player2.pass_ball }},{{ player2.shoot }},{{ player2.defence }}],
+                              name: '{{player2.playername}}'
+                            }
+                          ]
+                        }
+                      ]
+                    };
+            myChart.setOption(option);
+        </script>
+    </div>
+
+    <div id="main2" style="width:800px;height:800px;float: left">
+        <script>
+            var myChart = echarts.init(document.getElementById('main2'));
+            var option = {
+              title: {
+                text: '{{ player1.playername }}和{{ player2.playername }}的数据柱状图'
+              },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow'
+                }
+              },
+              legend: {},
+              grid: {
+                left: '0%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: {
+                type: 'value',
+                axisLabel: {
+                    textStyle:{
+                        color:'#ff4500',
+                        fontSize:20
+                    }
+                }
+              },
+              yAxis: {
+                type: 'category',
+                data: ['耐力', '速度', '盘带', '传球', '射门', '防守'],
+                axisLine: {
+                   lineStyle: {
+                       type: 'solid',
+                       color:'#ff00ff',
+                       width:1.5
+                   }
+               },
+               axisLabel: {
+                   textStyle: {
+                       color: '#ff4500',
+                       fontSize: 20
+                   }
+                }
+              },
+              series: [
+                {
+                  name: '{{ player1.playername }}',
+                  type: 'bar',
+                  data: [{{ player1.endurance }},{{ player1.speed }},{{ player1.rush_with_ball }},{{ player1.pass_ball }},{{ player1.shoot }},{{ player1.defence }}]
+                },
+                {
+                  name: '{{ player2.playername }}',
+                  type: 'bar',
+                  data: [{{ player2.endurance }},{{ player2.speed }},{{ player2.rush_with_ball }},{{ player2.pass_ball }},{{ player2.shoot }},{{ player2.defence }}]
+                }
+              ]
+            };
+            myChart.setOption(option);
+        </script>
+    </div>
+    <footer>
+        <small>&copy; 2021 <a href="http://127.0.0.1:5000/writerPage">By Wenfu_Zhu All rights reserved. NorthEastern University.</a></small>
+    </footer>
+</body>
+</html>

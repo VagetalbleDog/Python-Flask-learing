@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}修改球员——{{ player.playername }}{% endblock %}
+{% block page_title %}
+     <h1 style="text-align: center">欢迎，您现在可以修改</h1>
+     <h2 style="text-align: center">{{ player.playername }}——{{ player.position }}——{{ player.number }}号</h2>
+     <h3 style="text-align: center">详细数据</h3>
+{% endblock %}
+{% block body %}
+    <h3>编辑球员</h3>
+    <form method="post">
+        <ul class="movie-list">
+                <li style="text-align: center">
+                    修改后姓名<input type="text" name="edited_name" autocomplete="off" required value="{{ player.playername }}">
+                    ————
+                    修改后位置<select type="text" name="edited_position" autocomplete="off" required value="{{ player.position }}">
+                                <option>中锋(ST)</option>
+                                    <option>左边锋（LW）</option>
+                                    <option>右边锋（RW）</option>
+                                    <option>影子前锋（SS）</option>
+                                    <option>前腰（CAM）</option>
+                                    <option>后腰（CDM）</option>
+                                    <option>中后卫(CB)</option>
+                                    <option>左边后卫（LB）</option>
+                                    <option>右边后卫（RB）</option>
+                                    <option>门将(GK)</option>
+                            </select>
+                    ————
+                    修改后号码<input type="number" name="edited_number" autocomplete="off" required value="{{ player.number }}">
+                </li>
+                <li style="text-align: left">
+                    年龄（岁）：<input type="number" name="edited_age" autocomplete="off" value="{{ player.age }}">
+                    —————
+                    惯用脚：<select type="text" name="edited_foot" autocomplete="off">
+                    <option>左</option>
+                    <option>右</option>
+                </select>
+                </li>
+                <li style="text-align: left">
+                    身高（cm）：<input type="number" name="edited_height" autocomplete="off" value="{{ player.height }}">
+                    —————
+                    体重（kg）：<input type="number" name="edited_weight" autocomplete="off" value="{{ player.weight }}">
+                </li>
+                <li style="text-align: left">
+                    耐力:<input type="number" name="edited_endurance" autocomplete="off" value="{{ player.endurance }}">
+                    —————————
+                    速度:<input type="number" name="edited_speed" autocomplete="off" value="{{ player.speed }}">
+                </li>
+                <li style="text-align: left">
+                    盘带能力:<input type="number" name="edited_rush_with_ball" autocomplete="off" value="{{ player.rush_with_ball }}">
+                    ———————
+                    传球:<input type="number" name="edited_pass_ball" autocomplete="off" value="{{ player.pass_ball }}">
+                </li>
+                <li style="text-align: left">
+                    射门:<input type="number" name="edited_shoot" autocomplete="off" value="{{ player.shoot }}">
+                    —————————
+                    防守:<input type="number" name="edited_defence" autocomplete="off" value="{{ player.defence }}">
+                </li>
+                <li style="text-align: center"><input class="btn" type="submit" name="submit" value="提交修改申请"></li>
+            </ul>
+    </form>
+{% endblock %}

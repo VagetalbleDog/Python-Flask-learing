@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='东大校徽.jpeg') }}">
+    <title>东北大学球员数据库——请登录</title>
+    <link rel="stylesheet" href ="../static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href ="../static/css/style.css">
+</head>
+
+<body>
+    <div class="materialContainer">
+        <div class="box">
+            <div class="title">登录</div>
+                <form method="post">
+                    <div class="input">
+                        <label for="name">用户名</label>
+                        <input type="text" name="username" id="name" required>
+                        <span class="spin"></span>
+                    </div>
+                    <div class="input">
+                        <label for="pass">密码</label>
+                        <input type="password" name="password" id="pass" required>
+                        <span class="spin"></span>
+                    </div>
+                    <div class="button login">
+                        <button>
+                            <span>登录</span>
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </div>
+                </form>
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+            <form method="post">
+            <div class="title">注册</div>
+            <div class="input">
+                <label for="new_name">您的姓名</label>
+                <input type="text" name="new_name" id="new_name" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regname">用户名</label>
+                <input type="text" name="regname" id="regname" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regpass">密码</label>
+                <input type="password" name="regpass" id="regpass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="reregpass">确认密码</label>
+                <input type="password" name="reregpass" id="reregpass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="secret_key">管理员密钥(非管理员请填0)</label>
+                <input type="text" name="secret_key" id="secret_key" required>
+                <span class="spin"></span>
+            </div>
+            <div class="button">
+                <button>
+                    <span>注册</span>
+                </button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/index.js"></script>
+</body>
+</html>

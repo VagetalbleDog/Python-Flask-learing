@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球员详细信息页——{{ player.playername }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleDemo.css') }}" type="text/css">
+    <link rel="icon" href="{{ url_for('static', filename='东大校徽.jpeg') }}">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+</head>
+<body class="body_list">
+    <p style="text-align: center">
+        <h1 style="text-align: center">这是</h1>
+        <h2 style="text-align: center">{{ player.playername }}——{{ player.position }}——{{ player.number }}号</h2>
+        <h3 style="text-align: center">详细数据:</h3>
+    </p>
+
+    <nav>
+            <ul style="font-size: 21px">
+                <li><a href="{{ url_for('index') }}">回到主页</a></li>
+                <li><a href="http://127.0.0.1:5000/addplayer">添加球员</a></li>
+                <li><a href="http://127.0.0.1:5000/compare">球员比较</a></li>
+                <li><a href="https://www.dongqiudi.com/live/70" onclick="return confirm('您将访问服务器外网站！')">近期赛事</a> </li>
+                <li><a href="https://www.dongqiudi.com/data/1" onclick="return confirm('您将访问服务器外网站！')">热点数据</a> </li>
+                <li><a href="http://127.0.0.1:5000/visual_administer">可视化管理</a> </li>
+                <li><a href="{{ url_for('logout') }}">点击注销</a></li>
+            </ul>
+        </nav>
+        <div id="main" style="width:400px;height:400px;float: left;"></div>
+            <script type="text/javascript">
+                var myChart = echarts.init(document.getElementById('main'));
+                var option = {
+                      tooltip: {
+                        trigger: 'item'
+                      },
+                      legend: {
+                        top: '5%',
+                        left: 'center'
+                      },
+                      series: [
+                        {
+                          name: '{{ player.playername }}的能力值分布图',
+                          type: 'pie',
+                          radius: ['40%', '70%'],
+                          avoidLabelOverlap: false,
+                          itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                          },
+                          label: {
+                            show: false,
+                            position: 'center'
+                          },
+                          emphasis: {
+                            label: {
+                              show: true,
+                              fontSize: '30',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          labelLine: {
+                            show: false
+                          },
+                          data: [
+
+                            {value:{{ player.endurance }}, name:'耐力'},
+                            {value:{{ player.speed }}, name:'速度'},
+                            {value:{{ player.rush_with_ball }}, name:'盘带'},
+                            {value:{{ player.pass_ball }}, name:'传球'},
+                            {value:{{ player.shoot }}, name:'射门'},
+                            {value:{{ player.defence }} ,name:"防守" }
+                          ]
+                        }
+                      ]
+                    };
+                myChart.setOption(option);
+            </script>
+    <div id="main2" style="width: 400px;height: 400px;float: left">
+        <script type="text/javascript">
+
+            var myChart = echarts.init(document.getElementById('main2'));
+            option = {
+            tooltip: {},
+            legend: {
+                data:['能力值']
+            },
+            xAxis: {
+                data: ["耐力", "速度", "盘带", "传球", "射门", "防守"],
+                axisLabel:{
+                    color:'#ff00ff',
+                    fontSize:15
+                }
+            },
+            yAxis: {
+                axisLabel: {
+                    color:'#ff00ff',
+                    fontSize: 18
+                }
+            },
+            series: [{
+        data: [{{ player.endurance }},{{ player.speed }},{{ player.rush_with_ball }},{{ player.pass_ball }},{{ player.shoot }},{{ player.defence }}],
+        type: 'bar',
+        itemStyle: {
+            normal: {
+　　　　　　　　//这里是重点
+                color: function(params) {
+                	//注意，如果颜色太少的话，后面颜色不会自动循环，最好多定义几个颜色
+                    var colorList = ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#ca8622'];
+                    return colorList[params.dataIndex]
+                }
+            }
+        }
+    }]
+		};
+            myChart.setOption(option);
+        </script>
+    </div>
+     <ul class="movie-list">
+                <li style="text-align: center">
+                    基本信息——————
+                    年龄:{{ player.age }}岁
+                    ——————
+                    惯用脚：{{ player.foot }}脚
+                </li>
+                <li style="text-align: center">
+                    身体素质——————
+                    身高：{{ player.height }}cm
+                    ——————
+                    体重：{{ player.weight }}kg
+                </li>
+                <li style="text-align: center">
+                    体能————————
+                    耐力：{{ player.endurance }}
+                    ————————
+                    速度：{{ player.speed }}
+                </li>
+                <li style="text-align: center">
+                    有球能力——————
+                    盘带能力：{{ player.rush_with_ball }}
+                    ————
+                    传球能力：{{ player.pass_ball }}
+                </li>
+                <li style="text-align: center">
+                    其他能力——————
+                    射门：{{ player.shoot }}
+                    ————————
+                    防守：{{ player.defence }}
+                </li>
+    </ul>
+    <footer>
+        <small>&copy; 2021 <a href="http://127.0.0.1:5000/writerPage">By Wenfu_Zhu All rights reserved. NorthEastern University.</a></small>
+    </footer>
+</body>
+</html>
